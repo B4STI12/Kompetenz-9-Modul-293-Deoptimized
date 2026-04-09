@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <title>Risiko-Rechner – ForexGuide</title>
@@ -49,7 +49,7 @@
 
         <!-- FEHLER: label for stimmt nicht mit input id überein → WAVE Fehler -->
         <div class="form-group">
-          <label for="konto">Kontostand (CHF / USD / EUR)</label>
+          <label for="kontostand">Kontostand (CHF / USD / EUR)</label>
           <input type="number" id="kontostand" name="kontostand" placeholder="z.B. 1000" min="1" step="1" required>
         </div>
 
@@ -64,6 +64,7 @@
 
         <!-- FEHLER: Input ohne label komplett → WAVE Fehler -->
         <div class="form-group">
+          <label for="risiko">Risiko pro Trade (%)</label>
           <input type="number" id="risiko" name="risiko" placeholder="Risiko pro Trade (%)" min="0.1" max="10" step="0.1" value="1" required>
         </div>
 
@@ -85,7 +86,7 @@
       </fieldset>
 
       <div class="result-box" id="result">
-        <h4>Ergebnis</h4>
+        <h3>Ergebnis</h3>
         <div class="result-row">
           <span>Kontostand</span>
           <span class="value" id="res-konto">–</span>
