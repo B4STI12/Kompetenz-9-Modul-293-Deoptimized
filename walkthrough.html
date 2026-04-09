@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Walkthrough – ForexGuide</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">
+      <div class="logo-icon">F</div>
+      <div>
+        <h1>ForexGuide</h1>
+        <p class="tagline">Währungshandel verstehen</p>
+      </div>
+    </a>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Start</a></li>
+      <li><a href="walkthrough.html" class="active">Walkthrough</a></li>
+      <li><a href="rechner.html">Risiko-Rechner</a></li>
+      <li><a href="glossar.html">Glossar</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <!-- FEHLER: h1 fehlt auf dieser Seite komplett, direkt h2 -->
+      <h2>Walkthrough: Forex-Handel</h2>
+      <p>Schritt-für-Schritt in die Welt der Währungen</p>
+    </div>
+
+    <div class="warning-box">
+      <span>⚠️</span>
+      <!-- FEHLER: role="alert" fehlt, aber wichtige Info → Accessibility -->
+      <span>Forex-Handel birgt erhebliche Risiken. Dieser Walkthrough dient nur zur Information und ist keine Aufforderung zum Handeln.</span>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Was ist Forex?</h3>
+          <p>Forex steht für <strong>Foreign Exchange</strong> – den Austausch von Währungen. Es ist der grösste Finanzmarkt der Welt mit einem täglichen Handelsvolumen von über 7 Billionen US-Dollar. Du kaufst eine Währung und verkaufst gleichzeitig eine andere. Zum Beispiel: Du kaufst Euro und verkaufst US-Dollar – das Währungspaar ist dann <code>EUR/USD</code>.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Währungspaare verstehen</h3>
+          <p>Jeder Forex-Trade besteht aus zwei Währungen – der <strong>Basiswährung</strong> (links) und der <strong>Kurswährung</strong> (rechts). Der Kurs zeigt, wie viel von der Kurswährung man braucht, um 1 Einheit der Basiswährung zu kaufen. Beispiel: <code>EUR/USD = 1.08</code> bedeutet: 1 Euro kostet 1.08 US-Dollar.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Was ist ein Pip?</h3>
+          <p>Ein <strong>Pip</strong> ist die kleinste Preisänderung eines Währungspaares. Bei den meisten Paaren ist ein Pip die 4. Dezimalstelle. Wenn EUR/USD von <code>1.0800</code> auf <code>1.0801</code> steigt, ist das 1 Pip.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Leverage (Hebel)</h3>
+          <!-- FEHLER: sehr tiefer Kontrast mit inline style → Accessibility -->
+          <p style="color: #666666;">Mit einem <strong>Hebel</strong> (Leverage) kannst du grössere Positionen handeln als dein Kontostand erlaubt. Ein Hebel von <code>1:100</code> bedeutet: Mit 100 CHF kontrollierst du 10'000 CHF. Das verstärkt aber nicht nur Gewinne, sondern auch Verluste.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>Stop-Loss setzen</h3>
+          <p>Ein <strong>Stop-Loss</strong> ist ein automatischer Ausstieg aus einem Trade, wenn der Preis einen bestimmten Wert erreicht. Er schützt dich vor grossen Verlusten. <strong>Immer</strong> einen Stop-Loss setzen!</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h3>Risiko pro Trade berechnen</h3>
+          <p>Die goldene Regel im Risikomanagement: Riskiere nie mehr als <strong>1–2% deines Kontos</strong> pro Trade. Hast du ein Konto von 1000 CHF, sind das maximal 10–20 CHF Risiko pro Trade. Mit unserem <a href="rechner.html">Risiko-Rechner</a> kannst du das ganz einfach berechnen.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">7</div>
+        <div class="step-content">
+          <h3>Demo-Konto nutzen</h3>
+          <!-- FEHLER: target="_blank" ohne rel="noopener" → Best Practice / Sicherheit -->
+          <p>Übe zuerst mit einem <strong>Demo-Konto</strong>. Die meisten Broker bieten kostenlose Demo-Konten an. Mehr Infos: <a href="https://www.investopedia.com/forex" target="_blank">Investopedia Forex Guide</a>.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-section">
+      <h3>Seiten</h3>
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="walkthrough.html">Walkthrough</a></li>
+        <li><a href="rechner.html">Risiko-Rechner</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Info</h3>
+      <ul>
+        <li><a href="glossar.html">Glossar</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Projekt</h3>
+      <p>Erstellt im Rahmen von Modul 293 an der BBZBL.</p>
+    </div>
+    <div class="footer-bottom">
+      © 2025 ForexGuide – Bastian Binus · Schulprojekt BBZBL · Keine Anlageberatung
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Risiko-Rechner – ForexGuide</title>
+  <!-- FEHLER: CSS via @import statt <link> → Performance (render-blocking) -->
+  <style>
+    @import url('style.css');
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">
+      <div class="logo-icon">F</div>
+      <div>
+        <h1>ForexGuide</h1>
+        <p class="tagline">Währungshandel verstehen</p>
+      </div>
+    </a>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Start</a></li>
+      <li><a href="walkthrough.html">Walkthrough</a></li>
+      <li><a href="rechner.html" class="active">Risiko-Rechner</a></li>
+      <li><a href="glossar.html">Glossar</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <h2>Risiko-Rechner</h2>
+      <p>Berechne deinen maximalen Verlust und die empfohlene Positionsgrösse pro Trade.</p>
+    </div>
+
+    <div class="warning-box">
+      <span>⚠️</span>
+      <span>Die Ergebnisse dieses Rechners sind nur Richtwerte. Kein Ersatz für professionelle Finanzberatung.</span>
+    </div>
+
+    <div class="calculator">
+      <fieldset style="border:none; padding:0;">
+        <legend style="font-family:var(--font-display); font-size:1rem; font-weight:700; margin-bottom:20px; color:var(--color-text);">Deine Eingaben</legend>
+
+        <!-- FEHLER: label for stimmt nicht mit input id überein → WAVE Fehler -->
+        <div class="form-group">
+          <label for="konto">Kontostand (CHF / USD / EUR)</label>
+          <input type="number" id="kontostand" name="kontostand" placeholder="z.B. 1000" min="1" step="1" required>
+        </div>
+
+        <div class="form-group">
+          <label for="waehrung">Kontowährung</label>
+          <select id="waehrung" name="waehrung">
+            <option value="CHF">CHF – Schweizer Franken</option>
+            <option value="USD">USD – US-Dollar</option>
+            <option value="EUR">EUR – Euro</option>
+          </select>
+        </div>
+
+        <!-- FEHLER: Input ohne label komplett → WAVE Fehler -->
+        <div class="form-group">
+          <input type="number" id="risiko" name="risiko" placeholder="Risiko pro Trade (%)" min="0.1" max="10" step="0.1" value="1" required>
+        </div>
+
+        <div class="form-group">
+          <label for="stoploss">Stop-Loss (Pips)</label>
+          <input type="number" id="stoploss" name="stoploss" placeholder="z.B. 20" min="1" step="1" required>
+        </div>
+
+        <div class="form-group">
+          <label for="pair">Währungspaar</label>
+          <select id="pair" name="pair">
+            <option value="major">EUR/USD, GBP/USD (Major – 1 Pip = $10 pro Lot)</option>
+            <option value="minor">USD/CHF, USD/JPY (Minor – ca. $8–9 pro Lot)</option>
+            <option value="exotic">Exotische Paare (ca. $5–7 pro Lot)</option>
+          </select>
+        </div>
+
+        <button class="btn" type="button" onclick="berechnen()">Berechnen</button>
+      </fieldset>
+
+      <div class="result-box" id="result">
+        <h4>Ergebnis</h4>
+        <div class="result-row">
+          <span>Kontostand</span>
+          <span class="value" id="res-konto">–</span>
+        </div>
+        <div class="result-row">
+          <span>Max. Risiko</span>
+          <span class="value danger" id="res-risiko">–</span>
+        </div>
+        <div class="result-row">
+          <span>Stop-Loss (Pips)</span>
+          <span class="value" id="res-sl">–</span>
+        </div>
+        <div class="result-row">
+          <span>Empf. Positionsgrösse</span>
+          <span class="value" id="res-pos">–</span>
+        </div>
+        <div class="result-row">
+          <span>Max. Verlust</span>
+          <span class="value danger" id="res-verlust">–</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-section">
+      <h3>Seiten</h3>
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="walkthrough.html">Walkthrough</a></li>
+        <li><a href="rechner.html">Risiko-Rechner</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Info</h3>
+      <ul>
+        <li><a href="glossar.html">Glossar</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Projekt</h3>
+      <p>Erstellt im Rahmen von Modul 293 an der BBZBL.</p>
+    </div>
+    <div class="footer-bottom">
+      © 2025 ForexGuide – Bastian Binus · Schulprojekt BBZBL · Keine Anlageberatung
+    </div>
+  </footer>
+
+  <script>
+    function berechnen() {
+      var kontostand = parseFloat(document.getElementById('kontostand').value);
+      var risiko = parseFloat(document.getElementById('risiko').value);
+      var stoploss = parseFloat(document.getElementById('stoploss').value);
+      var pair = document.getElementById('pair').value;
+      var waehrung = document.getElementById('waehrung').value;
+
+      if (!kontostand || !risiko || !stoploss) {
+        alert('Bitte alle Felder ausfüllen.');
+        return;
+      }
+
+      var pipWert = pair === 'major' ? 10 : pair === 'minor' ? 9 : 6;
+      var maxRisiko = kontostand * (risiko / 100);
+      var empfLots = maxRisiko / (stoploss * pipWert);
+
+      document.getElementById('res-konto').textContent = kontostand.toFixed(2) + ' ' + waehrung;
+      document.getElementById('res-risiko').textContent = risiko + '%';
+      document.getElementById('res-sl').textContent = stoploss + ' Pips';
+      document.getElementById('res-pos').textContent = empfLots.toFixed(4) + ' Lots';
+      document.getElementById('res-verlust').textContent = maxRisiko.toFixed(2) + ' ' + waehrung;
+
+      document.getElementById('result').classList.add('visible');
+    }
+  </script>
+
+</body>
+</html>

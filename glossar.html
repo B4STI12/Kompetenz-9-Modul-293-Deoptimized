@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- FEHLER: Falsche meta description (zu lang, >160 Zeichen) → SEO Abzug -->
+  <meta name="description" content="Das ForexGuide Glossar erklärt alle wichtigen Begriffe aus dem Forex-Handel und Währungshandel auf einfache und verständliche Weise für Anfänger und Fortgeschrittene gleichermassen.">
+  <title>Glossar – ForexGuide</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">
+      <div class="logo-icon">F</div>
+      <div>
+        <h1>ForexGuide</h1>
+        <p class="tagline">Währungshandel verstehen</p>
+      </div>
+    </a>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Start</a></li>
+      <li><a href="walkthrough.html">Walkthrough</a></li>
+      <li><a href="rechner.html">Risiko-Rechner</a></li>
+      <li><a href="glossar.html" class="active">Glossar</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <h2>Glossar</h2>
+      <p>Alle wichtigen Forex-Begriffe einfach erklärt.</p>
+    </div>
+
+    <!-- FEHLER: input ohne label und ohne aria-label → WAVE Fehler -->
+    <div class="glossar-search">
+      <input type="text" id="suche" placeholder="Begriff suchen..." oninput="filtern()">
+    </div>
+
+    <dl class="glossar-list" id="glossar-liste">
+      <div class="glossar-item">
+        <dt>Forex (Foreign Exchange)</dt>
+        <dd>Der Markt, auf dem Währungen gehandelt werden. Mit einem täglichen Handelsvolumen von über 7 Billionen USD ist er der grösste Finanzmarkt der Welt. Er ist 24 Stunden täglich, 5 Tage die Woche geöffnet.</dd>
+      </div>
+      <div class="glossar-item">
+        <dt>Währungspaar</dt>
+        <dd>Zwei Währungen, die zusammen gehandelt werden. Die erste (links) ist die Basiswährung, die zweite (rechts) die Kurswährung. Beispiel: EUR/USD.</dd>
+      </div>
+      <div class="glossar-item">
+        <dt>Pip</dt>
+        <dd>Point in Percentage – die kleinste Preiseinheit bei einem Währungspaar. Bei den meisten Paaren ist ein Pip die 4. Dezimalstelle (0.0001).</dd>
+      </div>
+      <div class="glossar-item">
+        <dt>Lot</dt>
+        <dd>Standardeinheit für Handelsvolumen im Forex. 1 Standard-Lot = 100'000 Einheiten der Basiswährung.</dd>
+      </div>
+      <div class="glossar-item">
+        <dt>Leverage (Hebel)</dt>
+        <dd>Ermöglicht es, grössere Positionen zu handeln als das eigene Kapital erlauben würde. 1:100 bedeutet, mit 100 CHF kontrolliert man 10'000 CHF.</dd>
+      </div>
+      <div class="glossar-item">
+        <dt>Spread</dt>
+        <dd>Die Differenz zwischen Kauf- (Ask) und Verkaufspreis (Bid) eines Währungspaares.</dd>
+      </div>
+      <div class="glossar-item">
+        <dt>Stop-Loss</dt>
+        <dd>Ein automatischer Ausstiegsauftrag, der eine Position schliesst, wenn der Preis einen bestimmten ungünstigen Wert erreicht.</dd>
+      </div>
+      <div class="glossar-item">
+        <dt>Take-Profit</dt>
+        <dd>Gegenteil des Stop-Loss: Ein automatischer Ausstieg bei einem bestimmten Gewinnziel.</dd>
+      </div>
+      <div class="glossar-item">
+        <dt>Margin</dt>
+        <!-- FEHLER: unsauberes HTML – öffnendes Tag ohne Inhalt vor schliessendem -->
+        <dd>Das Kapital, das als Sicherheitsleistung hinterlegt werden muss.<br><br></dd>
+      </div>
+      <div class="glossar-item">
+        <dt>Broker</dt>
+        <dd>Vermittler zwischen Trader und dem Interbankenmarkt.</dd>
+      </div>
+      <div class="glossar-item">
+        <dt>Long / Short</dt>
+        <dd>Long = kaufen in Erwartung steigender Kurse. Short = verkaufen in Erwartung fallender Kurse.</dd>
+      </div>
+      <div class="glossar-item">
+        <dt>Volatilität</dt>
+        <dd>Mass für die Kursschwankungen eines Währungspaares.</dd>
+      </div>
+    </dl>
+  </main>
+
+  <footer>
+    <div class="footer-section">
+      <h3>Seiten</h3>
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="walkthrough.html">Walkthrough</a></li>
+        <li><a href="rechner.html">Risiko-Rechner</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Info</h3>
+      <ul>
+        <li><a href="glossar.html">Glossar</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Projekt</h3>
+      <p>Erstellt im Rahmen von Modul 293 an der BBZBL.</p>
+    </div>
+    <div class="footer-bottom">
+      © 2025 ForexGuide – Bastian Binus · Schulprojekt BBZBL · Keine Anlageberatung
+    </div>
+  </footer>
+
+  <script>
+    function filtern() {
+      var suche = document.getElementById('suche').value.toLowerCase();
+      var items = document.querySelectorAll('.glossar-item');
+      items.forEach(function(item) {
+        var text = item.textContent.toLowerCase();
+        item.style.display = text.includes(suche) ? 'block' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>
